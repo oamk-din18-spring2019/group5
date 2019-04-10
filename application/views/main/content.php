@@ -3,7 +3,7 @@
 <p>
 Choose action:<br>
 <ul>
-<li><a href="<?php echo site_url('movies/browse'); ?>">Browse movies</a></li>
+<li><a href="<?php echo site_url('movies/show_movies'); ?>">Browse movies</a></li>
 <li><a href="<?php echo site_url('movies/search'); ?>">Search movies</a></li>
 <?php 
     if(empty($_SESSION['user_logged_in']) == false && $_SESSION['user_logged_in'] == true) {
