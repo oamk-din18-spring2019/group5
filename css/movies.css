@@ -1,0 +1,18 @@
+body { 
+    background-color: LightSteelBlue;
+}
+
+
+div.menubar {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+    padding: 7px;
+    background-color: Orange;
+}
+
+
+.centered_text {
+    text-align: center;
+}

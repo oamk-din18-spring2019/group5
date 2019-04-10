@@ -15,9 +15,7 @@ class Access extends CI_Controller {
         $data['title'] = ucfirst($this->router->fetch_class()); //Set title to same as this class name with capital letter at first, header.php echoes title value
 
         $this->load->view('templates/header', $data); //Load generic header
-
-        $this->load->view('access/login'); //Show login message/form
-        
+        $this->load->view('access/login'); //Show login message/form       
         $this->load->view('templates/footer', $data); //Load generic footer
     }
 
@@ -54,7 +52,23 @@ class Access extends CI_Controller {
         $_SESSION['user_first_name'] = "";
         $_SESSION['user_last_name']  = "";
 
+        $this->load->view('templates/header', $data); //Load generic header
         $this->load->view('access/logout'); //Show logout message
+        $this->load->view('templates/footer', $data); //Load generic footer        
+    }
+
+
+    function admin_menu() {
+        $data['title'] = ucfirst($this->router->fetch_class()); //Set title to same as this class name with capital letter at first, header.php echoes title value
+
+        if(empty($_SESSION['user_logged_in']) == false && $_SESSION['user_logged_in'] == true) {
+            $this->load->view('templates/header', $data); //Load generic header
+            $this->load->view('access/admin_menu'); //Show administrator menu
+            $this->load->view('templates/footer', $data); //Load generic footer  
+        } else {
+            //User not logged in, redirect to login page
+            redirect('access/login');
+        }
     }
 
 
