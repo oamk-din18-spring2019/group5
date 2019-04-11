@@ -16,6 +16,12 @@
         width: 100%;
         padding-top: 1em;
       }
+      body {
+        background: #3E5151;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #DECBA4, #3E5151);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #DECBA4, #3E5151); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+      }
 
   </style>
 </head>
@@ -36,10 +42,6 @@
       </ul>
     </div>
   </nav>
-  <?php 
-    print_r($movies);
-    selectNum($movies);
-  ?>
   <div class="form-inline">
     <div class="form-group">
       <label for="exampleFormControlSelect1">Sort By:</label>
@@ -73,7 +75,7 @@
         </div>
     </div>
   </div> -->
-  <div class="container-fluid">
+  <!-- <div class="container-fluid">
   <div class="row">
     <div class="col-sm-4">
       <img src="../../images/1.jpg" class="rounded img-fluid">
@@ -94,13 +96,19 @@
       <img src="<?php echo base_url('images/3.jpg');?>" class="rounded img-fluid">
     </div>
   </div>
-</div>
+</div> -->
 <?php 
 
 $movies = array(
   array("Aquaman","../../images/1.jpg"),
   array("Vikings","../../images/2.jpg"),
-  array("Avengers","../../images/3.jpg")
+  array("Avengers","../../images/3.jpg"),
+  array("Rush Hour","../../images/5.jpg"),
+  array("H. Luna","../../images/4.jpg"),
+  array("WOWS","../../images/6.jpg"),
+  array("Notthing Hill","../../images/7.jpg"),
+  array("12 years","../../images/8.jpg"),
+  array("Titanic","../../images/9.jpg")
   );
 
 
