@@ -34,4 +34,21 @@ class Access_model extends CI_Model {
     }
 
 
+    public function addUser($login, $password, $first_name, $last_name) {
+        $data = array(
+            'login'      => $login,
+            'password'   => $password,
+            'first_name' => $first_name,
+            'last_name'  => $last_name);
+        $this->db->db_debug = false;
+        $this->db->insert('users', $data);
+    }
+
+
+    public function getUsers() {
+        $this->db->select('*');
+        $this->db->from('users');
+        return $this->db->get()->result_array();
+    }
+
 }

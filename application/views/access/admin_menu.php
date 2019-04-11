@@ -2,8 +2,8 @@
 
 
 <ul>
-<li><a href="<?php echo site_url('access/add_new_user'); ?>">Add new user</a></li>
-<li><a href="<?php echo site_url('access/admin_show_users'); ?>">Show users</a></li>
+<li><a href="<?php echo site_url('access/add_user_form'); ?>">Add new user</a></li>
+<li><a href="<?php echo site_url('access/show_users'); ?>">Show users</a></li>
 </ul>
 
 
