@@ -95,7 +95,29 @@
     </div>
   </div>
 </div>
+<?php 
 
+$movies = array(
+  array("Aquaman","../../images/1.jpg"),
+  array("Vikings","../../images/2.jpg"),
+  array("Avengers","../../images/3.jpg")
+  );
+
+
+
+
+echo "<div class='container-fluid'>
+  <div class='row'>";
+      for ($i = 0; $i < count($movies); $i++) {
+    $img_source = $movies[$i][1];
+    // echo '<div class="col-sm-4">'.$movies[$i][0], $movies[$i][1].'</h1></div>';
+    echo "<div class='col-sm-4'><img src='{$img_source}' class='rounded img-fluid'></div>";
+}
+  echo "</div>
+</div>";
+
+
+?>
   <h1>Hi</h1>
   <h2>h2 here</h2>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
