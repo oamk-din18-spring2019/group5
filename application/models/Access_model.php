@@ -51,4 +51,11 @@ class Access_model extends CI_Model {
         return $this->db->get()->result_array();
     }
 
+
+    public function deleteUser($user_id) {
+        $this->db->where('user_id', $user_id);
+        $this->db->delete('users');
+    }
+
+
 }

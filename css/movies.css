@@ -18,21 +18,14 @@ div.menubar {
 }
 
 
-table.user_table {
+.users-table {
     border-style: solid;
-    border-width: 2px;
+    border-width: 1px;
     border-color: black;
- border-collapse: collapse;
+    padding: 5px;
 }
 
-td.user_cell {
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
-}
 
-th.user_cell {
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
+table.users-table {
+    border-collapse: collapse;
 }

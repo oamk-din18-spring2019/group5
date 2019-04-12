@@ -97,6 +97,12 @@ class Access extends CI_Controller {
             $first_name =$this->input->post('first_name');
             $last_name = $this->input->post('last_name');
             $this->Access_model->addUser($login, $password, $first_name, $last_name);
+
+            $data['users']=$this->Access_model->getUsers();
+            $this->load->view('templates/header', $data); //Load generic header
+            $this->load->view('access/show_users', $data); //Show users
+            $this->load->view('templates/footer', $data); //Load generic footer  
+
         } else {
             //User not logged in, redirect to login page
             redirect('access/login');
@@ -105,12 +111,24 @@ class Access extends CI_Controller {
 
 
     function show_users() {
+        $data['title'] = ucfirst($this->router->fetch_class()); //Set title to same as this class name with capital letter at first, header.php echoes title value
         $this->load->model('Access_model');
         $data['users']=$this->Access_model->getUsers();
         $this->load->view('templates/header', $data); //Load generic header
         $this->load->view('access/show_users', $data); //Show users
         $this->load->view('templates/footer', $data); //Load generic footer  
     }
+
+
+    function delete_user($user_id) {
+        $this->load->model('Access_model');
+        $this->Access_model->deleteUser($user_id);
+        $data['users']=$this->Access_model->getUsers();
+        $this->load->view('templates/header', $data); //Load generic header
+        $this->load->view('access/show_users', $data); //Show users
+        $this->load->view('templates/footer', $data); //Load generic footer  
+    }
+
 
 
 }

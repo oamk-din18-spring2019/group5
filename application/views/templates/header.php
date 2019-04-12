@@ -13,7 +13,7 @@
         //User already logged in to system
        echo $_SESSION['user_first_name'] . " " . $_SESSION['user_last_name'] . " | " . "<a href=\"" .  site_url('access/logout') . "\">Logout</a>";
     } else {
-        echo "Guest" . " | " . "<a href=\"" .  site_url('access/login') . "\">Login</a>";
+        echo "<a href=\"" .  site_url('access/login') . "\">Admin login</a>";
     }
 ?>
 </div>
