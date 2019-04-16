@@ -44,92 +44,58 @@
   </nav>
   <div class="form-inline">
     <div class="form-group">
-      <label for="exampleFormControlSelect1">Sort By:</label>
-      <select class="form-control form-width" id="exampleFormControlSelect1">
-      <option>Title(A-Z)</option>
-      <option>Title(Z-A)</option>
-      <option>Release Year</option>
-      <option>Genre</option>
-      </select>
+      <form action="#" method="post">
+        <label for="exampleFormControlSelect1">Sort By:
+        <select class="form-control form-width" id="exampleFormControlSelect1" name="sorts">
+        <option value="Alph">Title(A-Z)</option>
+        <option value="Reverse_alph">Title(Z-A)</option>
+        <option value="Year">Release Year</option>
+        <option value="Genre">Genre</option>
+        </select>
+        <input type="submit" name="submit" value="Sort" />
+        </label>
+      </form>
+      
     </div>
   </div>
  
-  <!-- <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-4" style="background-color:yellow;">
-          <img src="../../images/1.jpg" class="rounded img-fluid">
-        <div class="col-sm-4" style="background-color:yellow;">
-          <img src="<?php echo base_url('images/2.jpg');?>" class="rounded img-fluid">
-        </div>
-        <div class="col-sm-4" style="background-color:yellow;">
-          <img src="<?php echo base_url('images/3.jpg');?>" class="rounded img-fluid">
-        </div>
-       <div class="col-sm-4" style="background-color:yellow;">
-          <img src="<?php echo base_url('images/1.jpg');?>" class="rounded img-thumbnail img-fluid">
-        </div>
-        <div class="col-sm-4" style="background-color:yellow;">
-          <img src="<?php echo base_url('images/2.jpg');?>" class="rounded img-thumbnail img-fluid">
-        </div>
-        <div class="col-sm-4" style="background-color:yellow;">
-          <img src="<?php echo base_url('images/3.jpg');?>" class="rounded img-thumbnail img-fluid">
-        </div>
-    </div>
-  </div> -->
-  <!-- <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-4">
-      <img src="../../images/1.jpg" class="rounded img-fluid">
-    </div>
-    <div class="col-sm-4">
-      <img src="<?php echo base_url('images/2.jpg');?>" class="rounded img-fluid">
-    </div>
-    <div class="col-sm-4">
-      <img src="<?php echo base_url('images/3.jpg');?>" class="rounded img-fluid">
-    </div>
-    <div class="col-sm-4">
-      <img src="../../images/1.jpg" class="rounded img-fluid">
-    </div>
-    <div class="col-sm-4">
-      <img src="<?php echo base_url('images/2.jpg');?>" class="rounded img-fluid">
-    </div>
-    <div class="col-sm-4">
-      <img src="<?php echo base_url('images/3.jpg');?>" class="rounded img-fluid">
-    </div>
-  </div>
-</div> -->
+ 
+<?php
+
+        function sortAsc($a, $b) {
+    return ($a[0] < $b[0]) ? 1 : -1;
+} 
+
+function sortDesc($a, $b) {
+    return ($a[0] < $b[0]) ? 1 : -1;
+} 
+
+
+ 
+      ?>
 <?php 
 
-$movies = array(
-  array("Aquaman","../../images/1.jpg"),
-  array("Vikings","../../images/2.jpg"),
-  array("Avengers","../../images/3.jpg"),
-  array("Rush Hour","../../images/5.jpg"),
-  array("H. Luna","../../images/4.jpg"),
-  array("WOWS","../../images/6.jpg"),
-  array("Notthing Hill","../../images/7.jpg"),
-  array("12 years","../../images/8.jpg"),
-  array("Titanic","../../images/9.jpg")
-  );
 
-
-
-
-echo "<div class='container-fluid'>
+  
+  function refresher($movie_data){
+  
+    echo "<div class='container-fluid'>
   <div class='row'>";
-      for ($i = 0; $i < count($movies); $i++) {
-    $img_source = $movies[$i][1];
-    // echo '<div class="col-sm-4">'.$movies[$i][0], $movies[$i][1].'</h1></div>';
-    echo "<div class='col-sm-4'><img src='{$img_source}' class='rounded img-fluid'></div>";
+      for ($i = 0; $i < count($movie_data); $i++) {
+    $title = $movie_data[$i]->title;
+    $imgurl = $movie_data[$i]->img_url;
+    echo "<div class='col-sm-4'><img src='{$imgurl}' class='rounded img-fluid'></div>";
 }
   echo "</div>
 </div>";
+  } 
 
-
+  refresher($movie_data);
 ?>
-  <h1>Hi</h1>
-  <h2>h2 here</h2>
+ 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
+
