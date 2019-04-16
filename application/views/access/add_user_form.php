@@ -1,6 +1,15 @@
-<h1 class="centered_text">Add new user</h1>
+<div class="content-header">Administrator menu - Add user</div>
 
+<div>
+<div class="side-menu">
+<ul>
+<li><a href="<?php echo site_url('access/add_user_form'); ?>">Add new user</a></li>
+<li><a href="<?php echo site_url('access/show_users'); ?>">Show users</a></li>
+<li><a href="<?php echo site_url('main'); ?>">Main menu</a></li>
+</ul>
+</div>
 
+<div class="main-content">
 
 <form action="<?php echo site_url('access/add_user'); ?>" method="post">
 <table>
@@ -29,8 +38,5 @@
 </table>
 <input type="submit" value="Add user">
 </form> 
-
-<p>
-<br>
-<a href="<?php echo site_url('main'); ?>">Return to main page</a>
-</p>
+</div>
+</div>

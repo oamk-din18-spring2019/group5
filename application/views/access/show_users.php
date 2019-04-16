@@ -1,30 +1,32 @@
-<h1 class="centered_text">User list</h1>
-<br><br>
-<table class="users-table">
-<thead>
-<tr><th class="users-table">ID</th><th class="users-table">Login</th><th class="users-table">First name</th><th class="users-table">Last name</th><th class="users-table">Actions</th>  </tr>
-</thead>
-<tbody>
+<div class="content-header">Administrator menu - Show users</div>
+
+<div>
+<div class="side-menu">
+<ul>
+<li><a href="<?php echo site_url('access/add_user_form'); ?>">Add new user</a></li>
+<li><a href="<?php echo site_url('access/show_users'); ?>">Show users</a></li>
+<li><a href="<?php echo site_url('main'); ?>">Main menu</a></li>
+</ul>
+</div>
+
+<div class="main-content">
 <?php
-    $td_prefix  = '<td class="users-table">';
-    $td_postfix = '</td>';
-
+    $template = array(
+       'table_open'         => '<table class="users-table">',
+       'heading_cell_start' => '<th class="users-table">',
+       'cell_start'         => '<td class="users-table">',
+       'cell_alt_start'     => '<td class="users-table">',
+    );
+    $this->table->set_template($template);
+    $this->table->set_heading('ID', 'Login', 'First name', 'Last name', '');
     foreach ($users as $row) {
-        echo '<tr>';
-        echo $td_prefix . $row['user_id']    . $td_postfix;
-        echo $td_prefix . $row['login']      . $td_postfix;
-        echo $td_prefix . $row['first_name'] . $td_postfix;
-        echo $td_prefix . $row['last_name']  . $td_postfix;
-        echo $td_prefix . '<a href="' . site_url('access/edit_user/' . $row['user_id']) . '">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . site_url('access/delete_user/' . $row['user_id']) .'">Delete</a>' . $td_postfix;
-        echo '</tr>';
+        $this->table->add_row($row['user_id'], $row['login'], $row['first_name'], $row['last_name'],
+            '<a href="' . site_url('access/edit_user/' . $row['user_id']) . '">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . site_url('access/confirm_delete_user/' . $row['user_id']) .'">Delete</a>'
+        );
     }
+
+    echo $this->table->generate();
 ?>
-</tbody>
-</table>
 
-
-
-<p>
-<br>
-<a href="<?php echo site_url('access/admin_menu'); ?>">Return to administator menu</a>
-</p>
+</div>
+</div>

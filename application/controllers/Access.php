@@ -120,6 +120,46 @@ class Access extends CI_Controller {
     }
 
 
+    function edit_user($user_id) {
+        $this->load->model('Access_model');
+        $data['user']=$this->Access_model->getUser($user_id)[0];
+        $this->load->view('templates/header', $data); //Load generic header
+        $this->load->view('access/edit_user_form', $data); //Show user edit form
+        $this->load->view('templates/footer', $data); //Load generic footer  
+    }
+
+    function modify_user() {
+        $this->load->model('Access_model');
+        if(empty($_SESSION['user_logged_in']) == false && $_SESSION['user_logged_in'] == true) {
+            //Get input from users
+            $user_id   = $this->input->post('user_id');
+            $login     = $this->input->post('login');
+            $password  = $this->input->post('password');
+            $first_name =$this->input->post('first_name');
+            $last_name = $this->input->post('last_name');
+            $this->Access_model->modifyUser($user_id, $login, $password, $first_name, $last_name);
+
+           $data['users']=$this->Access_model->getUsers();
+            $this->load->view('templates/header', $data); //Load generic header
+            $this->load->view('access/show_users', $data); //Show users
+            $this->load->view('templates/footer', $data); //Load generic footer
+        } else {
+            //User not logged in, redirect to login page
+            redirect('access/login');
+        }
+    }
+
+
+
+    function confirm_delete_user($user_id) {
+        $this->load->model('Access_model');
+        $data['user']=$this->Access_model->getUser($user_id)[0];
+        $this->load->view('templates/header', $data); //Load generic header
+        $this->load->view('access/confirm_delete_user', $data); //Show confirmation for user delete
+        $this->load->view('templates/footer', $data); //Load generic footer  
+    }
+
+
     function delete_user($user_id) {
         $this->load->model('Access_model');
         $this->Access_model->deleteUser($user_id);
@@ -128,7 +168,6 @@ class Access extends CI_Controller {
         $this->load->view('access/show_users', $data); //Show users
         $this->load->view('templates/footer', $data); //Load generic footer  
     }
-
 
 
 }

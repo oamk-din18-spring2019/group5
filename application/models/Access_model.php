@@ -52,6 +52,24 @@ class Access_model extends CI_Model {
     }
 
 
+    public function getUser($user_id) {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('user_id', $user_id);
+        return $this->db->get()->result_array();
+    }
+
+
+    public function modifyUser($user_id, $login, $password, $first_name, $last_name) {
+        $this->db->set('login',      $login);
+        $this->db->set('password',   $password);
+        $this->db->set('first_name', $first_name);
+        $this->db->set('last_name',  $last_name);
+        $this->db->where('user_id', $user_id);
+        $this->db->update('users'); 
+    }
+
+
     public function deleteUser($user_id) {
         $this->db->where('user_id', $user_id);
         $this->db->delete('users');

@@ -7,12 +7,13 @@
 </head>
 <body>
 
-<div class="menubar">
+<div class="menu-bar">
 <?php 
     if(empty($_SESSION['user_logged_in']) == false && $_SESSION['user_logged_in'] == true) {
-        //User already logged in to system
+        //User logged in, show logout
        echo $_SESSION['user_first_name'] . " " . $_SESSION['user_last_name'] . " | " . "<a href=\"" .  site_url('access/logout') . "\">Logout</a>";
     } else {
+        //User not logged in, show login
         echo "<a href=\"" .  site_url('access/login') . "\">Admin login</a>";
     }
 ?>

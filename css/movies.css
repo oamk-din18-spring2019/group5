@@ -1,23 +1,66 @@
 body { 
-    background-color: LightSteelBlue;
+    background-color:#b2c2bf;
 }
 
 
-div.menubar {
+/* Menu bar, has Admin login/Logout */
+div.menu-bar {
     border-style: solid;
     border-width: 2px;
     border-color: black;
     border-radius: 5px;
-    padding: 7px;
-    background-color: Orange;
+    padding: 6px;
+    background-color: #c0ded9;
 }
 
 
-.centered_text {
+/* Side menu bar has links for navigating between pages */
+div.side-menu {
+    position: absolute;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+    padding: 6px;
+    background-color:#c0ded9;
+    width: 11em;
+}
+
+
+div.side-menu ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+div.side-menu li {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+div.side-menu a:hover {
+    background-color: #eaece5;
+}
+
+
+/* Header for content */
+div.content-header {
+    font-size: 2em;
+    font-weight: bold;
     text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 
+/* Actual content of page */
+div.main-content {
+    margin-left: 13em;
+}
+
+
+/* Users table, needed for Access */
 .users-table {
     border-style: solid;
     border-width: 1px;
