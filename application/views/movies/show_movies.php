@@ -47,9 +47,11 @@
       <form action="#" method="post">
         <label for="exampleFormControlSelect1">Sort By:
         <select class="form-control form-width" id="exampleFormControlSelect1" name="sorts">
+        <option value="None">Choose</option>
         <option value="Alph">Title(A-Z)</option>
         <option value="Reverse_alph">Title(Z-A)</option>
-        <option value="Year">Release Year</option>
+        <option value="YearAsc">Release Year(Ascending)</option>
+        <option value="YearDesc">Release Year(Descending)</option>
         <option value="Genre">Genre</option>
         </select>
         <input type="submit" name="submit" value="Sort" />
@@ -83,14 +85,39 @@ function sortDesc($a, $b) {
   <div class='row'>";
       for ($i = 0; $i < count($movie_data); $i++) {
     $title = $movie_data[$i]->title;
+    $genre = $movie_data[$i]->genre;
     $imgurl = $movie_data[$i]->img_url;
-    echo "<div class='col-sm-4'><img src='{$imgurl}' class='rounded img-fluid'></div>";
+    $year = $movie_data[$i]->year;
+    echo "<div class='col-sm-4'><img src='{$imgurl}' class='rounded img-fluid'><div class='caption'><h4>{$title} ({$year})</h4><h6>{$genre}</h6></div></div>";
 }
   echo "</div>
 </div>";
   } 
 
-  refresher($movie_data);
+  
+
+ if(isset($_POST['submit'])){
+$selected_val = $_POST['sorts'];  // Storing Selected Value 
+        switch($selected_val) {
+          case 'Alph' :
+          refresher($sort_title_asc);
+          break;
+          case 'Reverse_alph' :
+          refresher($sort_title_desc);
+          break;
+          case 'YearAsc' :
+          refresher($sort_year_asc);
+          break;
+          case 'YearDesc' :
+          refresher($sort_year_desc);
+          break;
+          case 'Genre' :
+          refresher($sort_genre);
+          break;
+          default:
+          refresher($movie_data);
+        }
+      }
 ?>
  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
