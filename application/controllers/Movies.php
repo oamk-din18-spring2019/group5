@@ -13,7 +13,7 @@ class Movies extends CI_Controller {
     	$title['sort_year_asc'] = $this->sort_year_asc();
     	$title['sort_year_desc'] = $this->sort_year_desc();
     	$title['sort_genre'] = $this->sort_genre();
-        $this->load->view('movies/show_movies', $title); //Load actual content for this page
+        $this->load->view('movies/Show_movies', $title); //Load actual content for this page
         
         // $this->load->view('templates/footer', $data); //Load generic footer
     
@@ -21,43 +21,43 @@ class Movies extends CI_Controller {
 
 	private function get_movie_data() 
 		{
-			$this->load->model('get_movies');
-			$title = $this->get_movies->get_data();
+			$this->load->model('Get_movies');
+			$title = $this->Get_movies->get_data();
 			return $title;
 		}
 
 	private function sort_title_asc() 
 		{
-			$this->load->model('get_movies');
-			$title = $this->get_movies->sortTitleAsc();
+			$this->load->model('Get_movies');
+			$title = $this->Get_movies->sortTitleAsc();
 			return $title;
 		}
 
 	private function sort_title_desc() 
 		{
-			$this->load->model('get_movies');
-			$title = $this->get_movies->sortTitleDesc();
+			$this->load->model('Get_movies');
+			$title = $this->Get_movies->sortTitleDesc();
 			return $title;
 		}
 
 	private function sort_year_asc() 
 		{
-			$this->load->model('get_movies');
-			$title = $this->get_movies->sortYearAsc();
+			$this->load->model('Get_movies');
+			$title = $this->Get_movies->sortYearAsc();
 			return $title;
 		}
 
 	private function sort_year_desc() 
 		{
-			$this->load->model('get_movies');
-			$title = $this->get_movies->sortYearDesc();
+			$this->load->model('Get_movies');
+			$title = $this->Get_movies->sortYearDesc();
 			return $title;
 		}
 
 	private function sort_genre() 
 		{
-			$this->load->model('get_movies');
-			$title = $this->get_movies->sortGenre();
+			$this->load->model('Get_movies');
+			$title = $this->Get_movies->sortGenre();
 			return $title;
 		}
  }

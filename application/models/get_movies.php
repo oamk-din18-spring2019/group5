@@ -1,6 +1,6 @@
 <?php
 
-class get_movies extends CI_Model {
+class Get_movies extends CI_Model {
 
 	public function get_data()
 	{
