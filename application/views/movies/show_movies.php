@@ -71,9 +71,6 @@
 function sortDesc($a, $b) {
     return ($a[0] < $b[0]) ? 1 : -1;
 } 
-
-
- 
       ?>
 <?php 
 
@@ -88,6 +85,7 @@ function sortDesc($a, $b) {
     $genre = $movie_data[$i]->genre;
     $imgurl = $movie_data[$i]->img_url;
     $year = $movie_data[$i]->year;
+    $desc = $movie_data[$i]->description;
     echo "<div class='col-sm-4'><img src='{$imgurl}' class='rounded img-fluid'><div class='caption'><h4>{$title} ({$year})</h4><h6>{$genre}</h6></div></div>";
 }
   echo "</div>
@@ -96,9 +94,12 @@ function sortDesc($a, $b) {
 
   
 
- if(isset($_POST['submit'])){
-$selected_val = $_POST['sorts'];  // Storing Selected Value 
+  if(isset($_POST['submit'])){
+  $selected_val = $_POST['sorts'];  // Storing Selected Value 
         switch($selected_val) {
+          case 'None' :
+          refresher($movie_data);
+          break;
           case 'Alph' :
           refresher($sort_title_asc);
           break;
@@ -118,6 +119,9 @@ $selected_val = $_POST['sorts'];  // Storing Selected Value
           refresher($movie_data);
         }
       }
+  else {
+    refresher($movie_data);
+  }
 ?>
  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
