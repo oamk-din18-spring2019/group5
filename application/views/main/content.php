@@ -1,9 +1,9 @@
+<div class="content-header">Welcome to group5 movie site!</div>
+
 <div>
 <div class="side-menu">
 <ul>
-<li><a href="<?php echo site_url('movies/browse'); ?>">Browse movies</a></li>
-<li><a href="<?php echo site_url('movies/show_movies'); ?>">Browse movies</a></li>
-<li><a href="<?php echo site_url('movies/search'); ?>">Search movies</a></li>
+<li><a href="<?php echo site_url('movies/show_movies'); ?>">Show movies</a></li>
 <?php 
 
     if(empty($_SESSION['user_logged_in']) == false && $_SESSION['user_logged_in'] == true) {
@@ -14,6 +14,6 @@
 </ul>
 </div>
 <div class="main-content">
-This is a movie site...
+To start, choose wanted action from the left side menu.
 </div>
 </div>

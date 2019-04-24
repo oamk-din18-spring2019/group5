@@ -65,6 +65,55 @@ INSERT INTO `actors_in_movie` VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(
 UNLOCK TABLES;
 
 --
+-- Table structure for table `directors`
+--
+
+DROP TABLE IF EXISTS `directors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `directors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `about` text,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `directors`
+--
+
+LOCK TABLES `directors` WRITE;
+/*!40000 ALTER TABLE `directors` DISABLE KEYS */;
+/*!40000 ALTER TABLE `directors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `genres`
+--
+
+DROP TABLE IF EXISTS `genres`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `genres` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `genres`
+--
+
+LOCK TABLES `genres` WRITE;
+/*!40000 ALTER TABLE `genres` DISABLE KEYS */;
+/*!40000 ALTER TABLE `genres` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `movie_categories`
 --
 
@@ -96,12 +145,17 @@ DROP TABLE IF EXISTS `movies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `movies` (
-  `movie_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(64) NOT NULL,
-  `release_year` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`movie_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) NOT NULL,
+  `year` int(11) DEFAULT NULL,
+  `img_url` varchar(225) NOT NULL,
+  `genre` varchar(50) DEFAULT NULL,
+  `runtime` int(11) DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL,
+  `description` text,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `title_UNIQUE` (`title`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,8 +164,114 @@ CREATE TABLE `movies` (
 
 LOCK TABLES `movies` WRITE;
 /*!40000 ALTER TABLE `movies` DISABLE KEYS */;
-INSERT INTO `movies` VALUES (1,'The Dark Knight',2008,1),(2,'The Matrix',1999,1),(3,'Back to the Future',1985,2),(4,'The Chaos Class',1975,2),(5,'Schindler\'s List',1993,3),(6,'Fight Club',1994,3),(7,'Forrest Gump',1994,4),(8,'Eternal Sunshine of the Spotless Mind',2004,4);
+INSERT INTO `movies` VALUES (1,'Aquaman',2019,'../../images/aquaman.jpg','Fantasy',5,5,'long esc'),(2,'Vikings',2013,'../../images/vikings.jpg','Historical',5,5,'long esc'),(3,'Avengers4',2019,'../../images/avengers4.jpg','Fantasy',5,5,'long esc'),(4,'Rush Hour',1998,'../../images/rushhour.jpg','Action',5,5,'long esc'),(5,'Heneral Luna',2015,'../../images/heneral.jpg','Historical',5,5,'long esc'),(6,'Notting Hill',1999,'../../images/nhill.jpg','Romantic',5,5,'long esc'),(7,'Wolf of Wall Street',2015,'../../images/WOWS.jpg','Drama/Comedy',5,5,'long esc'),(8,'12 Years a Slave',2013,'../../images/12.jpg','Drama/Historical',5,5,'long esc'),(9,'Titanic',1997,'../../images/titanic.jpg','Romantic/Historical',5,5,'long esc');
 /*!40000 ALTER TABLE `movies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `movies_directors`
+--
+
+DROP TABLE IF EXISTS `movies_directors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `movies_directors` (
+  `Movies_Id` int(11) NOT NULL,
+  `directors_id` int(11) NOT NULL,
+  PRIMARY KEY (`Movies_Id`,`directors_id`),
+  KEY `fk_Movies_has_directors_directors1_idx` (`directors_id`),
+  KEY `fk_Movies_has_directors_Movies_idx` (`Movies_Id`),
+  CONSTRAINT `fk_Movies_has_directors_Movies1` FOREIGN KEY (`Movies_Id`) REFERENCES `movies` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Movies_has_directors_directors11` FOREIGN KEY (`directors_id`) REFERENCES `directors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `movies_directors`
+--
+
+LOCK TABLES `movies_directors` WRITE;
+/*!40000 ALTER TABLE `movies_directors` DISABLE KEYS */;
+/*!40000 ALTER TABLE `movies_directors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `movies_genres`
+--
+
+DROP TABLE IF EXISTS `movies_genres`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `movies_genres` (
+  `Movies_Id` int(11) NOT NULL,
+  `genres_id` int(11) NOT NULL,
+  PRIMARY KEY (`Movies_Id`,`genres_id`),
+  KEY `fk_Movies_has_genres_genres1_idx` (`genres_id`),
+  KEY `fk_Movies_has_genres_Movies1_idx` (`Movies_Id`),
+  CONSTRAINT `fk_Movies_has_genres_Movies12` FOREIGN KEY (`Movies_Id`) REFERENCES `movies` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Movies_has_genres_genres12` FOREIGN KEY (`genres_id`) REFERENCES `genres` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `movies_genres`
+--
+
+LOCK TABLES `movies_genres` WRITE;
+/*!40000 ALTER TABLE `movies_genres` DISABLE KEYS */;
+/*!40000 ALTER TABLE `movies_genres` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `movies_stars`
+--
+
+DROP TABLE IF EXISTS `movies_stars`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `movies_stars` (
+  `Movies_Id` int(11) NOT NULL,
+  `stars_id` int(11) NOT NULL,
+  PRIMARY KEY (`Movies_Id`,`stars_id`),
+  KEY `fk_Movies_has_stars_stars1_idx` (`stars_id`),
+  KEY `fk_Movies_has_stars_Movies1_idx` (`Movies_Id`),
+  CONSTRAINT `fk_Movies_has_stars_Movies13` FOREIGN KEY (`Movies_Id`) REFERENCES `movies` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Movies_has_stars_stars13` FOREIGN KEY (`stars_id`) REFERENCES `stars` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `movies_stars`
+--
+
+LOCK TABLES `movies_stars` WRITE;
+/*!40000 ALTER TABLE `movies_stars` DISABLE KEYS */;
+/*!40000 ALTER TABLE `movies_stars` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stars`
+--
+
+DROP TABLE IF EXISTS `stars`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stars` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `about` text,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stars`
+--
+
+LOCK TABLES `stars` WRITE;
+/*!40000 ALTER TABLE `stars` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stars` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -150,4 +310,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-06 23:17:28
+-- Dump completed on 2019-04-24  7:29:24
