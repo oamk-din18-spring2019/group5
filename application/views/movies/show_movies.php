@@ -83,8 +83,10 @@ function sortDesc($a, $b) {
     $genre = $movie_data[$i]->genre;
     $imgurl = $movie_data[$i]->img_url;
     $year = $movie_data[$i]->year;
-    $desc = $movie_data[$i]->description;
-    echo "<div class='col-sm-4'><img src='{$imgurl}' class='rounded img-fluid'><div class='caption'><h4>{$title} ({$year})</h4><h6>{$genre}</h6></div></div>";
+    $descr = $movie_data[$i]->description;
+    $link = $movie_data[$i]->link;
+    echo "<div class='col-sm-4'><a href='$link'><img src='{$imgurl}' class='rounded img-fluid'></a><div class='caption'><h4>{$title} ({$year})</h4><h6>{$genre}</h6></div></div>";
+    
 }
   echo "</div>
 </div>";
