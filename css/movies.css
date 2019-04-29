@@ -1,0 +1,91 @@
+body { 
+    background-color:#b2c2bf;
+}
+
+
+/* Menu bar, has Admin login/Logout */
+div.menu-bar {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+    padding: 6px;
+    background-color: #c0ded9;
+}
+
+
+/* Side menu bar has links for navigating between pages */
+div.side-menu {
+    position: absolute;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+    padding: 6px;
+    background-color:#c0ded9;
+    width: 11em;
+}
+
+
+div.side-menu ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+div.side-menu li {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+div.side-menu a:hover {
+    background-color: #eaece5;
+}
+
+
+/* Header for content */
+div.content-header {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+
+/* Actual content of page */
+div.main-content {
+    margin-left: 13em;
+}
+
+
+/* Users table, needed for Access */
+.users-table {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    padding: 5px;
+}
+
+
+table.users-table {
+    border-collapse: collapse;
+}
+
+/* For movie poster slide image */
+div.slide-image {
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+img.slide-image {
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 0;
+    transition: opacity 1s;
+    border-radius: 5px;
+
+}

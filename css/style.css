@@ -1,0 +1,24 @@
+
+h2 {
+  color: red;
+}
+
+
+h5 {
+  cursor: default;
+}
+
+
+
+.img-thumbnail {
+  width: 100%;
+  height: 300px;
+}
+
+.row {
+  margin-top: 100px
+}
+
+.form-control {
+	width: 50% !important;
+}
