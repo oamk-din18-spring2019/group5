@@ -4,7 +4,7 @@
 <div class="side-menu">
 <ul>
 <li><a href="<?php echo site_url('movies/show_movies'); ?>">Show movies</a></li>
-<li><a href="<?php echo site_url('movies/show_movies'); ?>">Trivia</a></li>
+<li><a href="<?php echo base_url('trivia/index.html'); ?>">Trivia</a></li>
 <?php
 
     if(empty($_SESSION['user_logged_in']) == false && $_SESSION['user_logged_in'] == true) {
