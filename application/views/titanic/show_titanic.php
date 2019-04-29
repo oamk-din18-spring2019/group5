@@ -45,7 +45,7 @@ padding-left: 30%;
 }
 </style>
 <body>
-<a href="https://www.youtube.com/watch?v=ezcvpLIyifU"><img src="<?php echo base_url('images/titanic.jpg');?>" width="400px" height="550px" style="float:left"></a>
+<a href="https://www.youtube.com/watch?v=ezcvpLIyifU"><img src="<?php echo base_url('images/titanic.jpg');?>" width="25%" height="550px" style="float:left"></a>
 <?php 
 //for ($i = 0; $i < count($movie_data); $i++) {
 //    $title = $movie_data[$i]->title;

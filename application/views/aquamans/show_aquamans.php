@@ -34,7 +34,7 @@ padding-left: 3%;
 
 </style>
 <body>
-<a href="https://www.youtube.com/watch?v=WDkg3h8PCVU"><img src="<?php echo base_url('images/aquaman.jpg');?>" width="400px" height="550px" style="float:left"></a>
+<a href="https://www.youtube.com/watch?v=WDkg3h8PCVU"><img src="<?php echo base_url('images/aquaman.jpg');?>" width="25%" height="550px" style="float:left"></a>
 <?php
 $query = $this->db->query('SELECT description, img_url, title from movies where Id=1');
 foreach ($query->result_array() as $row)
