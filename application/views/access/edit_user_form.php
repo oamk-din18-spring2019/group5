@@ -26,7 +26,7 @@
 
 <tr>
 <td><label for="password">Password: </label></td>
-<td><input type="password" placeholder="Enter Password" name="password" id="password" value="<?php echo $user['password'] ?>"></td>
+<td><input type="password" placeholder="Enter Password" name="password" id="password" value=""></td>
 <tr>
 
 
