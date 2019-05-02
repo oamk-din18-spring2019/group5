@@ -62,7 +62,10 @@ class Access_model extends CI_Model {
 
     public function modifyUser($user_id, $login, $password, $first_name, $last_name) {
         $this->db->set('login',      $login);
-        $this->db->set('password',   $password);
+        if(strlen($password) > 0)
+        {
+            $this->db->set('password',   $password);
+        }       
         $this->db->set('first_name', $first_name);
         $this->db->set('last_name',  $last_name);
         $this->db->where('user_id', $user_id);
