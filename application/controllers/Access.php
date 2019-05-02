@@ -28,10 +28,10 @@ class Access extends CI_Controller {
         $login    = $this->input->post('login');
         $password = $this->input->post('password');
 
-        //Get user password from database
+        //Get user password hash from database
         $user_password = $this->Access_model->getUserPassword($login);
 
-        if($user_password == $password) {
+        if(password_verify($password, $user_password)) {
             //Password correct, set data to users session and redirect to main page
             $_SESSION['user_logged_in'] = true;
             $_SESSION['user_first_name'] = $this->Access_model->getUserFirstName($login);
@@ -93,7 +93,7 @@ class Access extends CI_Controller {
         if(empty($_SESSION['user_logged_in']) == false && $_SESSION['user_logged_in'] == true) {
             //Get input from users
             $login     = $this->input->post('login');
-            $password  = $this->input->post('password');
+            $password  = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
             $first_name =$this->input->post('first_name');
             $last_name = $this->input->post('last_name');
             $this->Access_model->addUser($login, $password, $first_name, $last_name);
@@ -134,7 +134,7 @@ class Access extends CI_Controller {
             //Get input from users
             $user_id   = $this->input->post('user_id');
             $login     = $this->input->post('login');
-            $password  = $this->input->post('password');
+            $password  = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
             $first_name =$this->input->post('first_name');
             $last_name = $this->input->post('last_name');
             $this->Access_model->modifyUser($user_id, $login, $password, $first_name, $last_name);
