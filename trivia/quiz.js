@@ -34,6 +34,55 @@ let questions = [
         choiceB : "Avengers: Infinity War",
         choiceC : "Avatar",
         correct : "C"
+    },{
+        question : "What is the name of Will Smith’s character in Independence Day?",
+        imgSrc : "img/independence.jpg",
+        choiceA : "Oscar",
+        choiceB : "Del Spooner",
+        choiceC : "Captain Steven Hiller",
+        correct : "C"
+    },{
+        question : "What is the only Disney song to win a Grammy Award for Song of the Year?",
+        imgSrc : "img/disney.jpg",
+        choiceA : "A Whole New World",
+        choiceB : "You Can Fly",
+        choiceC : "Friend Like Me",
+        correct : "A"
+    },{
+        question : "What color were the slippers in the orginal wizard of Oz??",
+        imgSrc : "img/wizard.jpg",
+        choiceA : "gold",
+        choiceB : "sliver",
+        choiceC : "red",
+        correct : "B"
+    },{
+        question : "In the movie star wars, what is the emperors last name?",
+        imgSrc : "img/star.png",
+        choiceA : "palpatine",
+        choiceB : "Death Star",
+        choiceC : "CR90 Corvette",
+        correct : "A"
+    },{
+        question : "In the terminator, Sarah conner was played by who?  ?",
+        imgSrc : "img/terminator.jpg",
+        choiceA : "Bess Motta",
+        choiceB : "Linda hamilton",
+        choiceC : "Harriet Medin",
+        correct : "B"
+    },{
+        question : "The first movie given the title 'Blockbuster'was which movie?",
+        imgSrc : "img/block.jpg",
+        choiceA : "Gone With the Wind",
+        choiceB : "Jaws",
+        choiceC : "The Exorcist (1973)",
+        correct : "B"
+    },{
+        question : "Which screenwriter has received the most Oscar nominations?",
+        imgSrc : "img/oscars.jpg",
+        choiceA : "Woody Aleen",
+        choiceB : "Paddy Chayefsky",
+        choiceC : "Ben Affleck",
+        correct : "A"
     }
 ];
 
