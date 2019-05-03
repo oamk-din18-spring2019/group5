@@ -121,6 +121,7 @@ class Access extends CI_Controller {
 
 
     function edit_user($user_id) {
+        $data['title'] = ucfirst($this->router->fetch_class()); //Set title to same as this class name with capital letter at first, header.php echoes title value
         $this->load->model('Access_model');
         $data['user']=$this->Access_model->getUser($user_id)[0];
         $this->load->view('templates/header', $data); //Load generic header
@@ -134,7 +135,14 @@ class Access extends CI_Controller {
             //Get input from users
             $user_id   = $this->input->post('user_id');
             $login     = $this->input->post('login');
-            $password  = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+
+            $password = "";
+            //If password value is empty, then user did not modify password, otherwise get new hash
+            if(strlen($this->input->post('password')) > 0)
+            {
+                $password  = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+            }
+
             $first_name =$this->input->post('first_name');
             $last_name = $this->input->post('last_name');
             $this->Access_model->modifyUser($user_id, $login, $password, $first_name, $last_name);
@@ -152,6 +160,7 @@ class Access extends CI_Controller {
 
 
     function confirm_delete_user($user_id) {
+        $data['title'] = ucfirst($this->router->fetch_class()); //Set title to same as this class name with capital letter at first, header.php echoes title value
         $this->load->model('Access_model');
         $data['user']=$this->Access_model->getUser($user_id)[0];
         $this->load->view('templates/header', $data); //Load generic header
@@ -160,10 +169,11 @@ class Access extends CI_Controller {
     }
 
 
-    function delete_user($user_id) {
+    function delete_user() {
         $this->load->model('Access_model');
-        $this->Access_model->deleteUser($user_id);
+        $this->Access_model->deleteUser($this->input->post('user_id'));
         $data['users']=$this->Access_model->getUsers();
+        $data['title'] = ucfirst($this->router->fetch_class()); //Set title to same as this class name with capital letter at first, header.php echoes title value
         $this->load->view('templates/header', $data); //Load generic header
         $this->load->view('access/show_users', $data); //Show users
         $this->load->view('templates/footer', $data); //Load generic footer  
