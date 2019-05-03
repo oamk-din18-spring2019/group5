@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'movies_user',
-	'password' => 'hollywood',
-	'database' => 'movies',
+	'hostname' => 'mysli.oamk.fi',
+	'username' => 'k8jami00',
+	'password' => 'A77KMa9g4J82qXNb',
+	'database' => 'opisk_k8jami00',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
